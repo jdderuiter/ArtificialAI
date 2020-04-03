@@ -1,0 +1,37 @@
+// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+* {
+	&,
+	&::before,
+	&::after {
+		box-sizing: inherit;
+	}
+}
+
+// Fixes bug on MS touch/tablet
+@-ms-viewport { /* stylelint-disable-line */
+	width: device-width;
+}
+
+body {
+	// Fix scrollbars: http://msdn.microsoft.com/en-us/library/ie/hh771902(v=vs.85).aspx
+	-ms-overflow-style: scrollbar;
+
+	// Font rendering
+	font-family: $font-base;
+	font-size: $font-size-s;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration-skip-ink: auto;
+
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: $grey-light;
+	padding-top: 5rem;
+}
+
+html {
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}

@@ -1,0 +1,57 @@
+h1 {
+	margin: space(1) space(0) space(0.25) space(0);
+	color: $primary-color;
+	letter-spacing: 0.2px;
+	font-family: $font-heading;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 500;
+}
+
+h2, h3, h4 {
+	margin: space(1) space(0) space(0.25) space(0);
+	color: $primary-color;
+	letter-spacing: 0.15px;
+	font-family: $font-base;
+    font-weight: 500;
+}
+
+h2 {
+	font-size: 1.7rem;
+}
+
+h3 {
+	font-size: 1.4rem;
+}
+
+h4 {
+	font-size: 1.2rem;
+}
+
+h5 {
+	font-size: 1rem;
+}
+
+p {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	font-weight: 300;
+
+	& + & {
+		margin-top: space(1);
+	}
+}
+
+b {
+	font-weight: bold;
+}
+
+a {
+	color: $primary-color;
+}
+
+small {
+	font-size: $font-size-xs;
+	line-height: 1.5;
+}

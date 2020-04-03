@@ -1,0 +1,69 @@
+// Spacing
+// ------------------------------------------------------------
+$space-xs:						0.5rem;
+$space-s:						1rem;
+$space-m:						2rem;
+$space-l:						4rem;
+
+$space-multipliers: 0 1 2 3 4 5 6 7 8 9 10;
+$space-unit: 1rem;
+
+
+// Colors
+// ------------------------------------------------------------
+
+$primary-color:					#cc0133;
+$primary-bg:					#f0f0f0;
+$secondary-color:				#FFFFFF;
+$placeholder-color:				#b7b7b7;
+
+$success-color:					#82bb25;
+$success-bg:					#f3ffe1;
+$warning-color:					#F39225;
+$warning-bg:					lighten($warning-color, 35);
+$error-color:					#e30613;
+$error-bg:						lighten($error-color, 40);
+
+$white:							#FFF;
+$black:							#000;
+
+$grey-base: 					#ccc;
+$grey-dark:						#999;
+$grey-light: 					#f0f0f0;
+
+// Other
+// ------------------------------------------------------------
+$border-radius:					3px;
+
+
+// Fonts
+// ------------------------------------------------------------
+$font-heading:					"Open Sans", Helvetica ,sans-serif;
+$font-base:						"Open Sans", Helvetica ,sans-serif;
+$base-line-height:				1.5rem;
+$font-size-xxs:					0.7rem;
+$font-size-xs:					0.9rem;
+$font-size-s:					1rem;
+$font-size-m:					1.25rem;
+$font-size-l:					2rem;
+$font-size-xl:					2.25rem;
+$font-size-xxl:					3.75rem;
+
+// Utilities
+// ------------------------------------------------------------
+$utilityClass: 'u';
+$rotate-indices: 0 45 90 180;
+
+$shadow-interactive: 			0 2.5px 5px 0 rgba(0, 0, 0, 0.06);
+$shadow-interactive-hover: 		0 2.5px 5px 0 rgba(0, 0, 0, 0.06), 0 2.5px 5px 0 rgba(0, 0, 0, 0.25);
+
+// --------------------------------------------------
+// Socials
+// --------------------------------------------------
+$social-media: (
+	facebook:   (#3B5998, darken(#3B5998, 10)),
+	linkedin:   (#0077B5, darken(#0077B5, 10)),
+	mail:       ($primary-color, darken($primary-color, 10)),
+	twitter:    (#1DA1F2, darken(#1DA1F2, 10)),
+	whatsapp:   (#25D366, darken(#25D366, 10))
+);
