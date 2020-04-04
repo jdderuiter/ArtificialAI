@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+// import { mapActions } from 'vuex';
 import Navbar from '@/components/Navbar'
 
 export default {
@@ -17,20 +17,11 @@ export default {
         Navbar
     },
     mounted() {
-        this.initSocket(this.$socket)
-        // this.setNetworkStatus()
-        // window.addEventListener('online',  () => {
-        //     this.setNetworkStatus()
-        // });
-        //  window.addEventListener('offline',  () => {
-        //     this.setNetworkStatus()
-        // });
     },
     methods: {
-        ...mapActions({
-            setNetworkStatus: 'device/setNetworkStatus',
-            initSocket: 'device/initSocket',
-        })
+        // ...mapActions({
+            // initSocket: 'profiles/initSocket',
+        // })
     },
 }
 </script>

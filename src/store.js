@@ -8,7 +8,7 @@ const modules = {};
 
 // Dynamically import and namespace Vuex modules
 const moduleNames = [
-	'device',
+	'profiles',
 ];
 
 moduleNames.forEach(name => {

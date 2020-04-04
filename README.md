@@ -24,3 +24,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Socket connection from the front-end
+[https://github.com/probil/vue-socket.io-extended](https://github.com/probil/vue-socket.io-extended)
