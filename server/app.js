@@ -24,6 +24,12 @@ app.use('/', indexRouter);
 app.use('/profiles', profilesRouter);
 
 io.on('connection', (socket) => {
+    socket.on('getProfiles', async () => {
+        const profiles = await Profile.find({}).exec();
+        socket.emit('profiles', profiles)
+    });
+
+
     socket.on('uploadImage', (img) => {
         const file = '/img/'+Date.now()+'.png'
         const path = appRoot + '/public' + file

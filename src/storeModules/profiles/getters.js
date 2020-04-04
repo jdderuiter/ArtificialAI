@@ -1,3 +1,3 @@
 export default {
-    // mobile: (state) => state.mobile,
+    list: (state) => state.list,
 };
