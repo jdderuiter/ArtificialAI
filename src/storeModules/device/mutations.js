@@ -6,5 +6,8 @@ export default {
     },
     SET_NETWORK (state, payload) {
         Vue.set(state, 'network', payload);
+    },
+    SET_SOCKET: (state, socket) => {
+        Vue.set(state, 'io', socket);
     }
 };

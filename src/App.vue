@@ -17,17 +17,19 @@ export default {
         Navbar
     },
     mounted() {
-        this.setNetworkStatus()
-        window.addEventListener('online',  () => {
-            this.setNetworkStatus()
-        });
-         window.addEventListener('offline',  () => {
-            this.setNetworkStatus()
-        });
+        this.initSocket(this.$socket)
+        // this.setNetworkStatus()
+        // window.addEventListener('online',  () => {
+        //     this.setNetworkStatus()
+        // });
+        //  window.addEventListener('offline',  () => {
+        //     this.setNetworkStatus()
+        // });
     },
     methods: {
         ...mapActions({
-            setNetworkStatus: 'device/setNetworkStatus'
+            setNetworkStatus: 'device/setNetworkStatus',
+            initSocket: 'device/initSocket',
         })
     },
 }
