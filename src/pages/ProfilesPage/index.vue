@@ -1,5 +1,6 @@
 <template>
     <div class="profiles">
+        <!-- Loop trough profiles currently in the store -->
         <profile v-for="(profile, index) in profiles" :key="index" :image="profile.image"/>
     </div>
 </template>
@@ -9,7 +10,7 @@
     import Profile from '@/components/Profile'
 
     export default {
-        name: 'Profiles',
+        name: 'ProfilesPage',
         components: {
             Profile
         },
@@ -24,6 +25,8 @@
             })
         },
         mounted () {
+            // On page load, fetch the profiles that are online already
+            // (Action in the global store)
             this.getProfiles()
         }
 

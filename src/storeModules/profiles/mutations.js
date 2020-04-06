@@ -1,3 +1,7 @@
+/*
+*   CHANGE DATA IN STORE 
+*/
+
 import Vue from 'vue';
 
 export default {

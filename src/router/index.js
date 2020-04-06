@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home'
-import Profiles from '@/views/Profiles'
+import CameraPage from '@/pages/CameraPage'
+import ProfilesPage from '@/pages/ProfilesPage'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'camera',
+    component: CameraPage
   },
   {
     path: '/profiles',
     name: 'profiles',
-    component: Profiles
+    component: ProfilesPage
   },
 
 ]

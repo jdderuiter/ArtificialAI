@@ -7,23 +7,23 @@ cd server
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for front-end development
 ```
 npm start
 ```
 
-### Compiles and minifies for production
+### Compiles frond-end and minifies for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+#### Seperate services
+If you want to run all the serverices in seperate terminalls to work on the backend or see loggs
 ```
-npm run lint
+mongod
+node server/app.js
+npm run serve
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Socket connection from the front-end
 [https://github.com/probil/vue-socket.io-extended](https://github.com/probil/vue-socket.io-extended)
