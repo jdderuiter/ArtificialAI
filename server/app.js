@@ -37,28 +37,51 @@ io.on('connection', (socket) => {
         fs.writeFileSync(path, base64Data,  {encoding: 'base64'});
         uploadToDB(file);
     });
+
+    socket.on('deleteProfile', (id) => {
+        deleteProfile(id)
+    });
 });
   
 server.listen(3000, () => {
     console.log('listening on *:3000');
 });
 
-async function emitProfiles() {
+const deleteProfile = (id) => {
+    Profile.findById(id)
+    .then((instance) => {
+        const path = appRoot + '/public' + instance.image;
+        try {
+            fs.unlinkSync(path)
+            Profile.deleteOne({ _id: id }).exec()
+            emitProfiles()
+          } catch(err) {
+            handleError(err)
+          }
+
+    }).catch((err) => {
+        handleError(err)
+    });
+}
+
+const emitProfiles = async () => {
     const profiles = await Profile.find({}).exec();
     io.emit('profiles', profiles)
 }
 
-function uploadToDB (path) {
+
+const uploadToDB = (path) => {
     Profile.create({ 
         _id: new mongoose.Types.ObjectId,
         image: path 
-    }, (err, instance) => {
-        if (err) return handleError(err);
+    }).then((instance) => {
         emitProfiles();
+    }).catch((err) => {
+        handleError(err)
     });
 }
 
-function handleError (err) {
+const handleError = (err) => {
     console.log(err);
     return false;
 }
