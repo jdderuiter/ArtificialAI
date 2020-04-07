@@ -1,6 +1,7 @@
 <template>
     <div class="profile">
-        <img :src="image" alt="Profile image">
+        <img :src="profile.image" alt="Profile image">
+        <div>{{profile._id}}</div>
     </div>
 </template>
 
@@ -9,9 +10,9 @@
     export default {
         name: 'Profile',
         props: {
-            image :{
-                type: String,
-                default: ''
+            profile :{
+                type: Object,
+                default: {}
             }
         }
     }

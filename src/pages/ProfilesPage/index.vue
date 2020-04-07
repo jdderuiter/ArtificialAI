@@ -1,7 +1,7 @@
 <template>
     <div class="profiles">
         <!-- Loop trough profiles currently in the store -->
-        <profile v-for="(profile, index) in profiles" :key="index" :image="profile.image"/>
+        <profile v-for="(profile, index) in profiles" :key="index" :profile="profile"/>
     </div>
 </template>
 
