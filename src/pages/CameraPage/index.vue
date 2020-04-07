@@ -1,13 +1,7 @@
 <template>
     <div class="home">
-        <div class="home__text">
-            <h1>Bootstrap starter template</h1>
-            <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        </div>
-        
         <!-- On 'photo' emit call store action -->
         <camera  @photo="(img) => saveImage(img)"/>
-        
     </div>
 </template>
 
