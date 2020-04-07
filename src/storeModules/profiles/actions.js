@@ -14,6 +14,10 @@ const getProfiles = () => {
     $socket.emit('getProfiles')
 }
 
+const deleteProfile = ({}, id) => {
+    console.log('Testtest', id)
+    $socket.emit('deleteProfile', id)
+}
 
 // ACTION CALLED BY BACKEND AUTOMATICALLY (magic 🧙🏻‍♂️)
 const socket_profiles = ( { commit }, profiles) => {
@@ -24,5 +28,6 @@ const socket_profiles = ( { commit }, profiles) => {
 export default {
     saveImage,
     socket_profiles,
-    getProfiles
+    getProfiles,
+    deleteProfile
 }

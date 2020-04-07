@@ -1,6 +1,6 @@
 <template>
     <div class="profile">
-        <img :src="profile.image" alt="Profile image">
+        <img :src="profile.image" alt="Profile image" @click="() => $emit('delete')">
         <div>{{profile._id}}</div>
     </div>
 </template>

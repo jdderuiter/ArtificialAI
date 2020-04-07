@@ -1,7 +1,7 @@
 <template>
     <div class="profiles">
         <!-- Loop trough profiles currently in the store -->
-        <profile v-for="(profile, index) in profiles" :key="index" :profile="profile"/>
+        <profile v-for="(profile, index) in profiles" :key="index" :profile="profile" @delete="deleteProfile(profile._id)"/>
     </div>
 </template>
 
@@ -22,6 +22,7 @@
         methods: {
             ...mapActions({
                 getProfiles: 'profiles/getProfiles',
+                deleteProfile: 'profiles/deleteProfile'
             })
         },
         mounted () {
