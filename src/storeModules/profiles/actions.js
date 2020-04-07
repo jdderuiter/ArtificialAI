@@ -15,7 +15,6 @@ const getProfiles = () => {
 }
 
 const deleteProfile = ({}, id) => {
-    console.log('Testtest', id)
     $socket.emit('deleteProfile', id)
 }
 
