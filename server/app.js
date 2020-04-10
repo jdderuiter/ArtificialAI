@@ -73,7 +73,11 @@ const emitProfiles = async () => {
 const uploadToDB = (path) => {
     Profile.create({ 
         _id: new mongoose.Types.ObjectId,
-        image: path 
+        image: path ,
+        conclusions: [
+            'De gekste man van het feest.',
+            'Grootste kans om putjesschepper te worden.'
+        ]
     }).then((instance) => {
         emitProfiles();
     }).catch((err) => {
@@ -85,3 +89,14 @@ const handleError = (err) => {
     console.log(err);
     return false;
 }
+
+module.exports.mockData = function () {
+    console.log('------------IMPORTING MOCK DATA------------');
+
+
+
+
+
+    console.log('--------------IMPORTING SUCCES-------------');
+    console.log('Nu start de server. Groetjes Justin xx')
+  };

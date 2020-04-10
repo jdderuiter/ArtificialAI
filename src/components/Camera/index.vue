@@ -4,7 +4,7 @@
             <video ref="video" class="camera__video" width="640" height="480" autoplay></video>
         </div>
         <div>
-            <button id="snap" @click="capture()">Snap Photo</button>
+            <button id="snap" @click="capture()" type="button" class="btn btn-secondary btn-lg">Snap Photo</button>
         </div>
         <canvas ref="canvas" class="camera__canvas" width="640" height="480"></canvas>
         <ul>
