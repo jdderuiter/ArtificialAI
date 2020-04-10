@@ -12,16 +12,18 @@ $space-unit: 1rem;
 // Colors
 // ------------------------------------------------------------
 
-$primary-color:					#cc0133;
-$primary-bg:					#f0f0f0;
-$secondary-color:				#FFFFFF;
+$primary-color:					#004F6E;
+$primary-light:					#42A6C6;
+$primary-bg:					#F6F4E1;
+$secondary-color:				#F0B949;
 $placeholder-color:				#b7b7b7;
+$tertiary-color:				#F56E47;
 
 $success-color:					#82bb25;
 $success-bg:					#f3ffe1;
-$warning-color:					#F39225;
+$warning-color:					$secondary-color;
 $warning-bg:					lighten($warning-color, 35);
-$error-color:					#e30613;
+$error-color:					$tertiary-color;
 $error-bg:						lighten($error-color, 40);
 
 $white:							#FFF;
