@@ -69,34 +69,76 @@ const emitProfiles = async () => {
     io.emit('profiles', profiles)
 }
 
+const mockConclusions = [
+    [
+        'De gekste man van het feest',
+        'Grootste kans om putjesschepper te worden'
+    ],
+    [
+        '80% kans dat hij/zij een moord zal plegen',
+    ],
+    [
+        'Beste dansmoves',
+        'Heeft geen diploma'
+    ],
+    [
+        'Knapste persoon van het feest',
+    ],
+    [
+        'Zal minimaal 4 kinderen krijgen',
+        'Wil het liefst niet werken'
+    ],
+    [
+        'Ziet er uit alsof hij/zij zwanger is',
+        'Blablabla'
+    ],
+    [
+        'Blablabla',
+        'blablabla.'
+    ],
+]
 
-const uploadToDB = (path) => {
+const uploadToDB = (path , conc = mockConclusions[0]) => {
     Profile.create({ 
         _id: new mongoose.Types.ObjectId,
         image: path ,
-        conclusions: [
-            'De gekste man van het feest.',
-            'Grootste kans om putjesschepper te worden.'
-        ]
+        conclusions: conc
     }).then((instance) => {
         emitProfiles();
     }).catch((err) => {
         handleError(err)
     });
 }
-
 const handleError = (err) => {
     console.log(err);
     return false;
 }
 
-module.exports.mockData = function () {
-    console.log('------------IMPORTING MOCK DATA------------');
+module.exports.mockData = async function () {
+    console.log('------------IMPORTING MOCK DATA & STARTING SERVER------------');
+    const directoryPath = appRoot + '/public/img';
+    fs.readdir(directoryPath, function (err, files) {
+        //handling error
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        } 
+        //listing all files using forEach
+        let i = 1;
+        files.forEach(function (file) {
+            Profile.find({image: '/img/'+file}).exec()
+            .then((res) => {
+                if (res.length > 0) {
+                    console.log("Profile for image: "+ file + " already exists. skipping")
+                } else {
+                    uploadToDB('/img/' +file, mockConclusions[i])
+                    i++
+                    console.log("Uploaded random user for file: " + file);
+                }
+                
+            })    
+        });
+    });
 
 
-
-
-
-    console.log('--------------IMPORTING SUCCES-------------');
-    console.log('Nu start de server. Groetjes Justin xx')
+    
   };
