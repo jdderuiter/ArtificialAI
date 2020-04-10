@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "mongod  --quiet & node server/app.js & vue-cli-service serve",
+    "createMockData": "node -e 'require(\"./server/app.js\").mockData()'",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
