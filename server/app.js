@@ -130,7 +130,7 @@ module.exports.mockData = async function () {
                 if (res.length > 0) {
                     console.log("Profile for image: "+ file + " already exists. skipping")
                 } else {
-                    uploadToDB(file, mockConclusions[i])
+                    uploadToDB('/img/' +file, mockConclusions[i])
                     i++
                     console.log("Uploaded random user for file: " + file);
                 }
