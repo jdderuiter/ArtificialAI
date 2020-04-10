@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CameraPage from '@/pages/CameraPage'
 import ProfilesPage from '@/pages/ProfilesPage'
+import RatePage from '@/pages/RatePage'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/profiles',
     name: 'profiles',
     component: ProfilesPage
+  },
+  {
+    path: '/rating',
+    name: 'rating',
+    component: RatePage
   },
 
 ]

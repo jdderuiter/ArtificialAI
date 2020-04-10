@@ -9,6 +9,9 @@
                 <li class="nav-item">
                     <router-link class="nav-link" to="/profiles">Profielen</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" to="/rating">Rating</router-link>
+                </li>
             </ul>
         </div>
     </nav>
