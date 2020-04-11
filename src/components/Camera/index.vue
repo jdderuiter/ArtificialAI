@@ -1,17 +1,17 @@
 <template>
     <div class="camera">
-        <div>
-            <video ref="video" class="camera__video" width="640" height="480" autoplay></video>
-        </div>
-        <div>
-            <button id="snap" @click="capture()" type="button" class="btn btn-secondary btn-lg">Snap Photo</button>
+        <video ref="video" class="camera__video" autoplay></video>
+
+        <div class="camera__content">
+            <div class="camera__content__frame"></div>
+            <div class="camera__content__text">
+                <h1>{{ text }}</h1>
+                <!-- Use a button to pause/play the video with JavaScript -->
+                <button id="snap" @click="capture()" type="button" class="btn btn-primary btn-lg">Neem foto</button>
+            </div>
+            
         </div>
         <canvas ref="canvas" class="camera__canvas" width="640" height="480"></canvas>
-        <ul>
-            <li v-for="c in captures" :key="c">
-                <img :src="c" height="50" />
-            </li>
-        </ul>
     </div>
 </template>
 
@@ -22,7 +22,8 @@
             return {
                 video: {},
                 canvas: {},
-                captures: []
+                captures: [],
+                text: "Neem een foto om toegang te krijgen!"
             }
         },
         mounted() {
@@ -47,6 +48,14 @@
 
                 //Emit event to parent
                 this.$emit('photo', img)
+
+                this.text = "Bedankt!"
+                this.video.pause()
+
+                setTimeout(() => {
+                    this.video.play()
+                    this.text = "Neem een foto om toegang te krijgen!"
+                }, 2000);
             }
         }
     }
@@ -56,11 +65,51 @@
     $component: 'camera';
 
     .#{$component} {
-        text-align: center;
-        color: #2c3e50;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &__video {
             background-color: #000000;
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            display: block;
+        }
+
+        &__content {
+            text-align: center;
+            z-index: 99;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+
+            &__text {
+                margin-top: 1rem;
+                font-weight: bold;
+                button {
+                    margin-top: 1rem;
+                    background-color: $secondary-color;
+                    border: 1px solid $secondary-color;
+                    &:hover, &:focus {
+                        background-color: darken($secondary-color, 10);
+                        border: 1px solid darken($secondary-color, 10);
+                    }
+                }
+            }
+
+            &__frame {
+                width: 40rem;
+                border: 5px dashed $primary-color;
+                height: 40rem;
+                opacity: 0.5;
+            }
+            
         }
 
         &__canvas {
