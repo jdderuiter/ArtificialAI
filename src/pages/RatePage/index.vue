@@ -2,9 +2,15 @@
     <div class="rate-page">
         <div>{{questions[currentQuestion]}}</div>
         <div class="row">
-            <rating-answer v-for="(profile, index) in profiles"  :image="profile.image" :key="index" />
+            <rating-answer
+                    v-for="(profile, index) in profiles"
+                    :image="profile.image"
+                    :key="index"
+                    @select="select(profile._id)"
+            />
         </div>
-        <button type="button" class="btn btn-primary" :disabled="buttonDisabled" @click="nextQuestion">Primary</button>
+
+        <button type="button" class="btn btn-secondary btn-lg" :disabled="(!enoughAnswersGiven || buttonDisabled)" @click="nextQuestion">Next Question</button>
     </div>
 </template>
 
@@ -32,14 +38,23 @@
                     'Wie houdt het meest van popmuziek?',
                     'Wie is er single?'
                 ],
+                enoughAnswersGiven: false,
                 buttonDisabled: false,
+                selectedAnswers: []
             }
         },
 
         watch: {
             currentQuestion: function () {
-                if(this.currentQuestion === (this.questions.length - 1)) {
+                if(this.currentQuestion === (this.questions.length)) {
                     this.buttonDisabled = true
+                }
+            },
+            selectedAnswers: function () {
+                if(this.selectedAnswers.length === 3) {
+                    this.enoughAnswersGiven = true
+                } else {
+                    this.enoughAnswersGiven = false
                 }
             }
         },
@@ -47,6 +62,11 @@
         methods: {
             nextQuestion() {
                 this.currentQuestion ++
+                this.selectedAnswers = []
+            },
+            select(index) {
+                console.log(index)
+                this.selectedAnswers.push(index)
             },
             ...mapActions({
                 getProfiles: 'profiles/getProfiles',
