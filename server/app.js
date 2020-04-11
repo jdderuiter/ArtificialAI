@@ -54,7 +54,8 @@ const deleteProfile = (id) => {
         try {
             fs.unlinkSync(path)
             Profile.deleteOne({ _id: id }).exec()
-            emitProfiles()
+            setTimeout(() => emitProfiles(), 500);
+            
           } catch(err) {
             handleError(err)
           }

@@ -1,6 +1,6 @@
 <template>
     <div class="profile-modal">
-        <div class="profile-modal__backdrop"></div>
+        <div class="profile-modal__backdrop" @click.self="$emit('close')"></div>
         <div class="profile-modal__text p-3">
             <h2>{{ text }}</h2>
             <div class="row">
@@ -9,8 +9,12 @@
                 </div>
             </div>
            <div class="row">
-               <div class="col-6"></div>
-               <div class="col-6"></div>
+               <div class="col-6">
+                   <button class="btn btn-success btn-block" @click="$emit('close')">Nee</button>
+               </div>
+               <div class="col-6">
+                   <button class="btn btn-danger btn-block" @click="$emit('delete')">Ja</button>
+               </div>
            </div>
         </div>
     </div>
@@ -65,6 +69,7 @@
             min-height: 20rem;
 
             .row {
+                width: 100%;
                 justify-content: center
             }
         }

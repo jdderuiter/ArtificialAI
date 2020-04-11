@@ -2,9 +2,9 @@
     <div class="logout-page">
         <h1>Kies jouw foto om het feest te verlaten!</h1>
         <div class="row">
-            <rating-answer v-for="(profile, index) in profiles"  :image="profile.image" :key="index" @click="logout(profile)" />
+            <rating-answer v-for="(profile, index) in profiles"  :image="profile.image" :key="index" @select="popup(profile)" />
         </div>
-        <profile-modal v-if="deleting" :profile="selected" />
+        <profile-modal v-if="deleting" :profile="selected" @close="closeModal" @delete="deleteUser"/>
     </div>
 </template>
 
@@ -33,11 +33,19 @@
         methods: {
             ...mapActions({
                 getProfiles: 'profiles/getProfiles',
+                deleteProfile: 'profiles/deleteProfile'
             }),
-            logout (profile) {
+            popup (profile) {
                 console.log("logout", profile)
                 this.deleting = true
                 this.selected = profile
+            },
+            closeModal () {
+                this.deleting = false;
+            },
+            deleteUser () {
+                this.closeModal()
+                this.deleteProfile(this.selected._id)
             }
         },
         mounted () {
