@@ -3,7 +3,7 @@
         <div>{{questions[currentQuestion]}}</div>
         <div class="row">
             <rating-answer
-                    v-for="(profile, index) in profiles"
+                    v-for="(profile, index) in selectedProfiles"
                     :image="profile.image"
                     :key="index"
                     :enoughAnswersGiven="enoughAnswersGiven"
@@ -30,7 +30,11 @@
         computed: {
             ...mapGetters({
                 profiles: 'profiles/list',
-            })
+            }),
+            selectedProfiles() {
+                if (this.currentQuestion != -1)
+                return this.shuffelArray(this.profiles)
+            }
         },
 
         data() {
@@ -61,7 +65,6 @@
                 }
             }
         },
-
         methods: {
             nextQuestion() {
                 this.currentQuestion ++
@@ -77,6 +80,15 @@
                     this.selectedAnswers.splice(index, 1);
                 }
                 console.log(this.selectedAnswers)
+            },
+            shuffelArray(array) {
+                for(let i = array.length - 1; i > 0; i--){
+                    const j = Math.floor(Math.random() * i)
+                    const temp = array[i]
+                    array[i] = array[j]
+                    array[j] = temp
+                }
+                return array
             },
             ...mapActions({
                 getProfiles: 'profiles/getProfiles',
