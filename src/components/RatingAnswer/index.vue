@@ -2,16 +2,12 @@
 <div class="col-3 answer py-3 img-container">
     <div class="selected"/>
     <img :src="image" alt="Card image cap" class="card-img img-home">
-    <button v-bind:class="{selected: isSelected}" :disabled="disabled" class="btn btn-outline-primary" @click="toggleSelection">
-        deze
-    </button>
+    <button v-bind:class="{selected: isSelected}" :disabled="disabled" class="btn btn-outline-primary" @click="toggleSelection">deze</button>
 </div>
 
 </template>
 
 <script>
-    import {mapActions} from "vuex";
-
     export default {
         name: "RatingAnswer",
         props: {
@@ -22,6 +18,10 @@
             enoughAnswersGiven: {
                 type: Boolean,
                 default: false
+            },
+            currentQuestion: {
+                type: Number,
+                default: 0,
             }
         },
 
@@ -39,6 +39,9 @@
 
                 this.isSelected = !this.isSelected
 
+            },
+            deselect() {
+                this.isSelected = false
             }
         },
 
@@ -49,6 +52,9 @@
                 } else {
                     this.disabled = false
                 }
+            },
+            currentQuestion: function () {
+                this.isSelected = false
             }
         }
     }

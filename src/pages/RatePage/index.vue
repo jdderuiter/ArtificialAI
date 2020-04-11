@@ -7,6 +7,7 @@
                     :image="profile.image"
                     :key="index"
                     :enoughAnswersGiven="enoughAnswersGiven"
+                    :currentQuestion="currentQuestion"
                     @select="select(profile._id)"
                     @deselect="deselect(profile._id)"
             />
