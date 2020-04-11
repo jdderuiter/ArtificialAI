@@ -73,7 +73,7 @@
             width: 60%;
             top: 75%;
             left: 20%;
-            background-color: rgba(255,255,255,0.5);
+            background-color: rgb(255,255,255);
         }
         .selected {
             background-color: #2461fe;
