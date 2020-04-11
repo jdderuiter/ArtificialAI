@@ -1,6 +1,6 @@
 <template>
     <div class="col-3 answer py-3">
-        <img :src="image" alt="Card image cap" class="card-img img-home shadow-sm">
+        <img :src="image" alt="Card image cap" class="card-img img-home shadow-sm" @click="$emit('click')">
     </div>
 </template>
 

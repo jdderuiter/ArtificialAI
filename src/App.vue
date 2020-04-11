@@ -1,6 +1,7 @@
 <template>
     <div id="app">
-        <!-- <navbar /> -->
+        <!-- @TODO: delete navbar -->
+        <navbar />
         <div class="app-content container">
             <router-view/>
         </div>

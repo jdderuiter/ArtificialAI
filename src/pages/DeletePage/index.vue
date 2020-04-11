@@ -4,7 +4,7 @@
         <div class="row">
             <rating-answer v-for="(profile, index) in profiles"  :image="profile.image" :key="index" @click="logout(profile)" />
         </div>
-        <profile-modal />
+        <profile-modal v-if="deleting" :profile="selected" />
     </div>
 </template>
 
@@ -26,6 +26,7 @@
         },
         data() {
             return {
+                deleting: false,
                 selected: {},
             }
         },
@@ -35,6 +36,8 @@
             }),
             logout (profile) {
                 console.log("logout", profile)
+                this.deleting = true
+                this.selected = profile
             }
         },
         mounted () {
