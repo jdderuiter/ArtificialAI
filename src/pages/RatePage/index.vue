@@ -6,7 +6,9 @@
                     v-for="(profile, index) in profiles"
                     :image="profile.image"
                     :key="index"
+                    :enoughAnswersGiven="enoughAnswersGiven"
                     @select="select(profile._id)"
+                    @deselect="deselect(profile._id)"
             />
         </div>
 
@@ -64,9 +66,16 @@
                 this.currentQuestion ++
                 this.selectedAnswers = []
             },
-            select(index) {
-                console.log(index)
-                this.selectedAnswers.push(index)
+            select(profileId) {
+                this.selectedAnswers.push(profileId)
+                console.log(this.selectedAnswers)
+            },
+            deselect(profileId) {
+                const index = this.selectedAnswers.indexOf(profileId)
+                if (index > -1) {
+                    this.selectedAnswers.splice(index, 1);
+                }
+                console.log(this.selectedAnswers)
             },
             ...mapActions({
                 getProfiles: 'profiles/getProfiles',
