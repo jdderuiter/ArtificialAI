@@ -80,7 +80,7 @@ const mockConclusions = [
     ],
     [
         'Beste dansmoves',
-        'Heeft geen diploma'
+        'Heeft geen diploma',
     ],
     [
         'Knapste persoon van het feest',
@@ -90,12 +90,24 @@ const mockConclusions = [
         'Wil het liefst niet werken'
     ],
     [
-        'Ziet er uit alsof hij/zij zwanger is',
-        'Blablabla'
+        'Heeft bindingsangst',
+        'Luistert popmuziek',
+        'Is fan van Famke Louise'
     ],
     [
-        'Blablabla',
-        'blablabla.'
+        'Ziet er uit alsof hij/zij zwanger is',
+        'Is singel'
+    ],
+    [
+        'Heeft slechte muzieksmaak',
+    ],
+    [
+        'Heeft vast TikTok',
+        'Ruikt niet lekker',
+        'Is het uitbundigst'
+    ],
+    [
+        'Is lelijk',
     ],
 ]
 
