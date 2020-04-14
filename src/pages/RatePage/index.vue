@@ -41,9 +41,14 @@
             return {
                 currentQuestion: 0,
                 questions: [
-                    'Wie vind je het mooist?',
+                    'Wie is de uitbundigste?',
+                    'Wie doet er geen opleiding?',
+                    'Wie is het aggressiefst?',
+                    'Wie danst het best?',
+                    'Wie heeft de meeste bedpartners gehad?',
                     'Wie houdt het meest van popmuziek?',
-                    'Wie is er single?'
+                    'Wie is er single?',
+
                 ],
                 enoughAnswersGiven: false,
                 buttonDisabled: false,
