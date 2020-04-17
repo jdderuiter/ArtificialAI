@@ -1,6 +1,6 @@
 <template>
     <div class="rate-page">
-        <div>{{questions[currentQuestion]}}</div>
+        <div><h1>{{questions[currentQuestion]}}</h1></div>
         <div class="row">
             <rating-answer
                     v-for="(profile, index) in selectedProfiles"

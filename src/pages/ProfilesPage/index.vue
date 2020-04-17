@@ -1,7 +1,12 @@
 <template>
     <div class="profiles">
+        <h1>Nu op het feest:</h1>
         <!-- Loop trough profiles currently in the store -->
-        <profile v-for="(profile, index) in profiles" :key="index" :profile="profile" @delete="deleteProfile(profile._id)"/>
+        <div class="row">
+            <div class="col-3 answer py-3 img-container" v-for="(profile, index) in profiles" :key="index">
+                <profile :profile="profile" @delete="deleteProfile(profile._id)"/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -39,6 +44,9 @@
 
     .#{$component} {
         //Styles go here
+        h1 {
+            text-align: center;
+        }
     }
 
 </style>
