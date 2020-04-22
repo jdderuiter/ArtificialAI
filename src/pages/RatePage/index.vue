@@ -1,6 +1,9 @@
 <template>
     <div class="rate-page">
-        <div><h1>{{questions[currentQuestion]}}</h1></div>
+        <div>
+            <h1>{{questions[currentQuestion]}}</h1>
+            <p>Selecteer de drie feestgangers die het best passen bij de stelling.</p>
+        </div>
         <div class="row">
             <rating-answer
                     v-for="(profile, index) in selectedProfiles"
@@ -13,7 +16,7 @@
             />
         </div>
 
-        <button type="button" class="btn btn-secondary btn-lg" :disabled="(!enoughAnswersGiven || buttonDisabled)" @click="nextQuestion">Next Question</button>
+        <button type="button" class="btn btn-secondary btn-lg" :disabled="(!enoughAnswersGiven || buttonDisabled)" @click="nextQuestion">Volgende beoordeling</button>
     </div>
 </template>
 
@@ -41,14 +44,13 @@
             return {
                 currentQuestion: 0,
                 questions: [
-                    'Wie is de uitbundigste?',
-                    'Wie doet er geen opleiding?',
-                    'Wie is het aggressiefst?',
-                    'Wie danst het best?',
-                    'Wie heeft de meeste bedpartners gehad?',
-                    'Wie houdt het meest van popmuziek?',
-                    'Wie is er single?',
-
+                    'Wie zijn er het uitbundigst?',
+                    'Wie doen er geen opleiding?',
+                    'Wie zijn het meest aggressief?',
+                    'Wie dansen het best?',
+                    'Wie hebben de meeste bedpartners gehad?',
+                    'Wie houden het meest van popmuziek?',
+                    'Wie zijn er single?',
                 ],
                 enoughAnswersGiven: false,
                 buttonDisabled: false,

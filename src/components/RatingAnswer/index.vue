@@ -2,7 +2,7 @@
 <div class="col-3 answer py-3 img-container">
     <div class="selected"/>
     <img :src="image" alt="Card image cap" class="card-img img-home">
-    <button v-bind:class="{selected: isSelected}" :disabled="disabled" class="btn btn-outline-primary" @click="toggleSelection">deze</button>
+    <button v-bind:class="{selected: isSelected}" :disabled="disabled" class="btn btn-outline-primary" @click="toggleSelection">Selecteer</button>
 </div>
 
 </template>
