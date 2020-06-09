@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CameraPage from '@/pages/CameraPage'
+import TestPage from '@/pages/TestPage'
+import TestWatch from '@/pages/TestWatch'
 import ProfilesPage from '@/pages/ProfilesPage'
 import RatePage from '@/pages/RatePage'
 import DeletePage from '@/pages/DeletePage'
@@ -12,6 +14,16 @@ const routes = [
     path: '/',
     name: 'camera',
     component: CameraPage
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: TestPage
+  },
+  {
+    path: '/watch',
+    name: 'testwatch',
+    component: TestWatch
   },
   {
     path: '/profiles',

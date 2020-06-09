@@ -1,5 +1,5 @@
 /*
-*   LOGIC BEFORE CHANGING DATE FROM STORE
+*   LOGIC BEFORE CHANGING DATA FROM STORE
 */
 
 import $socket from '@/socket-instance';

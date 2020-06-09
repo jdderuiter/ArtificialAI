@@ -1,15 +1,23 @@
 {
-  "name": "rankingserver",
+  "name": "AAIserver",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "proxy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node proxy.js",
+    "proxy": "nodemon proxy.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run proxy\" \"npm run server\""
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
   "dependencies": {
+    "concurrently": "^4.1.1",
     "express": "^4.17.1",
+    "http-proxy": "^1.17.0",
     "mongoose": "^5.9.7",
     "socket.io": "^2.3.0"
   }

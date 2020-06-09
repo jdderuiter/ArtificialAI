@@ -10,6 +10,7 @@ const modules = {};
 // Add new modules here
 const moduleNames = [
 	'profiles',
+	'video'
 ];
 
 moduleNames.forEach(name => {
