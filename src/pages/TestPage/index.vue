@@ -67,7 +67,7 @@
     
             setInterval(() => {
                 this.draw();
-            },0.1);
+            },16);
         }
 
     }
