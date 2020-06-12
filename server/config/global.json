@@ -4,12 +4,5 @@
         "port"   : "8000",
         "socket" : "8001"
       }
-    },
-  
-    "Proxy" : {
-      "settings" :{
-        "port"         : "8002",
-        "storage_path" : "storage"
-      }
     }
 }

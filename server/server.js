@@ -1,11 +1,8 @@
 const express    = require('express');
 const path       = require('path');
-const Proxy      = require('http-proxy').createProxyServer();
 const config     = require(path.join(__dirname,"./config/global.json"));
 const port       = config.Server.settings.port;
 const app        = express();
-
-const ProxyServer= 'http://localhost:'+ config.Proxy.settings.port;
 
 /**
  * WebSocket Configuration
@@ -42,13 +39,6 @@ io.on('connection',function(socket){
 io.of('/stream').clients((error, clients) => {
   if (error) throw error;
     console.log(clients);
-});
-
-/**
- * Run Proxy Server
- */
-app.all("/*", function(req, res) {
-    Proxy.web(req, res, {target: ProxyServer});
 });
 
 app.listen(port, () => console.log(`\x1b[40m`,`\x1b[32m`,

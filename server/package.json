@@ -4,10 +4,8 @@
   "description": "",
   "main": "proxy.js",
   "scripts": {
-    "start": "node proxy.js",
-    "proxy": "nodemon proxy.js",
-    "server": "nodemon server.js",
-    "dev": "concurrently \"npm run proxy\" \"npm run server\""
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
