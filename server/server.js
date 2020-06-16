@@ -34,6 +34,14 @@ io.on('connection',function(socket){
     socket.on('stream',function(data){
         socket.broadcast.emit('stream',data);
     });
+
+    socket.on('setQuestion', (question) => {
+        socket.emit('question', question)
+    });
+
+    socket.on('setAnswer', (answer) => {
+        socket.emit('question', answer)
+    });
 });
 
 io.of('/stream').clients((error, clients) => {
