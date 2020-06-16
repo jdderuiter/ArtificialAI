@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CameraPage from '@/pages/CameraPage'
-import TestPage from '@/pages/TestPage'
 import TestWatch from '@/pages/TestWatch'
 import ProfilesPage from '@/pages/ProfilesPage'
 import RatePage from '@/pages/RatePage'
@@ -18,7 +17,7 @@ const routes = [
   {
     path: '/test',
     name: 'test',
-    component: TestPage
+    redirect: '/'
   },
   {
     path: '/watch',

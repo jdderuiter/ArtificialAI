@@ -1,62 +1,107 @@
 <template>
     <div class="camera">
-        <video ref="video" class="camera__video" autoplay></video>
-
-        <div class="camera__content">
-            <div class="camera__content__frame"></div>
-            <div class="camera__content__text">
-                <h1>{{ text }}</h1>
-                <!-- Use a button to pause/play the video with JavaScript -->
-                <button id="snap" @click="capture()" type="button" class="btn btn-primary btn-lg">Neem foto</button>
-            </div>
-            
-        </div>
-        <canvas ref="canvas" class="camera__canvas" width="640" height="480"></canvas>
+        <video ref="video" class="camera__video" autoplay="true"></video>
+        <canvas ref="canvas" class="camera__canvas"></canvas>
     </div>
 </template>
 
 <script>
+    import $socket from '@/socket-instance';
+    import * as faceapi from 'face-api.js';
+
+    const MODEL_URL = '/models'
+
     export default {
         name: 'Camera',
         data() {
             return {
-                video: {},
                 canvas: {},
-                captures: [],
-                text: "Neem een foto om toegang te krijgen!"
-            }
-        },
-        mounted() {
-            this.video = this.$refs.video;
-            // Setup camera stream if camera exists
-            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-                    this.video.srcObject = stream;
-                    this.video.play();
-                });
+                context: {},
+                video: {},
             }
         },
         methods: {
-            capture () {
-                // Save screenshot of camera feed to canvas & convert to img
-                this.canvas = this.$refs.canvas;
-                var context = this.canvas.getContext("2d").drawImage(this.video, 0, 0, 640, 480);
-                const img = this.canvas.toDataURL("image/png")
+            loadCamera (stream) {
+                try {
+                    this.video.srcObject = stream;
+                } catch (error) {
+                    this.video.src = URL.createObjectURL(stream);
+                }
+            },
+            loadFail () {
+                console.log("Camera not conected")
+            },
+            draw () {
+                this.context.drawImage(this.video, 0, 0, this.context.width, this.context.height);
+                $socket.emit('stream',this.canvas.toDataURL('image/webp'));
+            },
+            initAI () {
+                console.log("load ai models")
+                Promise.all([
+                    faceapi.loadSsdMobilenetv1Model(MODEL_URL),
+                    faceapi.loadFaceLandmarkModel(MODEL_URL),
+                    faceapi.loadFaceRecognitionModel(MODEL_URL),
+                ]).then(this.startVideo)
 
-                //Save image to array of thumbnails
-                this.captures.push(img);
+            },
+            startVideo () {
+                navigator.getUserMedia = ( navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia );
+            
+                if(navigator.getUserMedia)
+                {
+                    navigator.getUserMedia({
+                        video: true, 
+                        audio: false
+                    },this.loadCamera,this.loadFail);
+                }
 
-                //Emit event to parent
-                this.$emit('photo', img)
+                this.video.addEventListener('play', () => {
+                    //create the canvas from video element as we have created above
+                    const canvas = faceapi.createCanvasFromMedia(this.video);
+                    canvas.style.position = "absolute";
+                    canvas.style.top = "0";
 
-                this.text = "Bedankt!"
-                this.video.pause()
+                    //append canvas to body or the dom element where you want to append it
+                    document.body.append(canvas)
+                    
+                    // displaySize will help us to match the dimension with video screen and accordingly it will draw our detections
+                    // on the streaming video screen
+                    console.log(this.video)
+                    const displaySize = { width: this.video.clientWidth, height: this.video.clientHeight }
 
-                setTimeout(() => {
-                    this.video.play()
-                    this.text = "Neem een foto om toegang te krijgen!"
-                }, 2000);
+                    faceapi.matchDimensions(canvas, displaySize)
+
+                    setInterval(async () => {
+                        const detections = await faceapi.detectAllFaces(this.video).withFaceLandmarks().withFaceDescriptors()
+                        const resizedDetections = faceapi.resizeResults(detections, displaySize)
+                        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+                        faceapi.draw.drawDetections(canvas, resizedDetections)
+                        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+                    }, 100)
+                })
+
+                this.draw()
+    
+                setInterval(() => {
+                    this.draw();
+                },16);
             }
+        },
+        mounted () {
+            this.canvas = this.$refs.canvas;
+            this.context = this.canvas.getContext('2d');
+        
+            this.canvas.width = 900;
+            this.canvas.height = 700;
+        
+            this.context.width = this.canvas.width;
+            this.context.height = this.canvas.height;
+        
+            this.video = this.$refs.video;
+
+            window.onload = () => {
+                this.initAI()
+            };
         }
     }
 </script>
@@ -70,9 +115,6 @@
         bottom: 0;
         min-width: 100%;
         min-height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
         &__video {
             background-color: #000000;
@@ -80,45 +122,13 @@
             min-width: 100%;
             min-height: 100%;
             display: block;
-        }
-
-        &__content {
-            text-align: center;
-            z-index: 99;
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-
-            &__text {
-                margin-top: 1rem;
-                font-weight: bold;
-                button {
-                    margin-top: 1rem;
-                    background-color: $secondary-color;
-                    border: 1px solid $secondary-color;
-                    &:hover, &:focus {
-                        background-color: darken($secondary-color, 10);
-                        border: 1px solid darken($secondary-color, 10);
-                    }
-                }
-            }
-
-            &__frame {
-                width: 40rem;
-                border: 5px dashed $primary-color;
-                height: 40rem;
-                opacity: 0.5;
-            }
-            
+            // transform: rotateY(180deg);
+            // -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+            // -moz-transform:rotateY(180deg); /* Firefox */
         }
 
         &__canvas {
             display: none;
-        }
-
-        li {
-            display: inline;
-            padding: 5px;
         }
     }   
 
