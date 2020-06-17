@@ -1,27 +1,30 @@
 <template>
     <div class="test">
-        <img :src="stream">
-        <div id="log">{{ stream }}</div>
+        <img :src="stream" />
+        <questions />
     </div>
 </template>
 
 <script>
-    import { mapGetters, mapActions } from 'vuex';
-    import $socket from '@/socket-instance';
+    import { mapGetters, mapActions } from 'vuex'
+    import $socket from '@/socket-instance'
+    import Questions from '@/components/Questions'
 
     export default {
         name: 'TestPage',
+        components: {
+            Questions,
+        },
         data() {
             return {
-                stream: {}
+                stream: {},
             }
         },
-        mounted () {
-            $socket.on('stream',(image) => {
+        mounted() {
+            $socket.on('stream', (image) => {
                 this.stream = image
-            });
-        }
-
+            })
+        },
     }
 </script>
 
@@ -29,8 +32,15 @@
     $component: 'test';
 
     .#{$component} {
+        position: relative;
+        text-align: center;
+
+        .questions {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
         //Styles go here
-
     }
-
 </style>
