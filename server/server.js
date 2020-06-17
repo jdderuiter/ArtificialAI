@@ -35,11 +35,11 @@ io.on('connection',function(socket){
         socket.broadcast.emit('stream',data);
     });
 
-    socket.on('setQuestion', (question) => {
-        socket.emit('question', question)
+    socket.on('question', (question) => {
+        socket.broadcast.emit('question', question)
     });
 
-    socket.on('setAnswer', (answer) => {
+    socket.on('answer', (answer) => {
         socket.emit('question', answer)
     });
 });

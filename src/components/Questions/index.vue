@@ -6,6 +6,8 @@
 </template>
 
 <script>
+    import $socket from '@/socket-instance'
+
     export default {
         name: 'Questions',
         data() {
@@ -22,11 +24,15 @@
                 currentQuestion: 0,
             }
         },
+        mounted() {
+            $socket.emit('question', 0);
+        },
         methods: {
             nextQuestion() {
                 this.currentQuestion >= 6
                     ? (this.currentQuestion = 0)
                     : this.currentQuestion++
+                $socket.emit('question', this.currentQuestion);
             },
         },
     }

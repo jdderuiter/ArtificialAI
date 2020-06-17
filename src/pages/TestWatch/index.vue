@@ -6,7 +6,6 @@
 </template>
 
 <script>
-    import { mapGetters, mapActions } from 'vuex'
     import $socket from '@/socket-instance'
     import Questions from '@/components/Questions'
 
