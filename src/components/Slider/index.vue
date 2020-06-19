@@ -1,12 +1,18 @@
 <template>
   <div class="slider">
-    <hi>Slider komt hier</hi>
+    <vue-slider v-model="value"></vue-slider>
   </div>
 </template>
 
 <script>
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/default.css'
+
   export default {
-    name: 'Slider'
+    name: 'Slider',
+    components:{
+      VueSlider
+    }
 }
 </script>
 
@@ -14,7 +20,7 @@
   $component: 'slider';
 
     .#{$component} {
-      color: white;
+      color: #ffffff;
     }
     
-</style>s
+</style>
