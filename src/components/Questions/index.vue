@@ -1,15 +1,20 @@
 <template>
     <div class="questions">
         <div>{{ questionsArray[currentQuestion] }}</div>
+        <Slider />
         <button v-on:click="nextQuestion">Volgende vraag</button>
     </div>
 </template>
 
 <script>
     import { mapActions } from 'vuex';
+    import Slider from '@/components/Slider';
 
     export default {
         name: 'Questions',
+        components: {
+            Slider
+        },
         data() {
             return {
                 questionsArray: [
@@ -35,6 +40,7 @@
             }),
 
             nextQuestion() {
+
                 // TODO: add slider and set this.answer as its value, pass this.answer with this.setAnswer instead of the random number.
                 this.setAnswer((Math.random() * 100).toFixed())
                 this.currentQuestion >= 6
