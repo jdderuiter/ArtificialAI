@@ -6,13 +6,13 @@
 </template>
 
 <script>
-    import $socket from '@/socket-instance'
+    import { mapActions } from 'vuex';
 
     export default {
         name: 'Questions',
         data() {
             return {
-                questionsArray: [ 
+                questionsArray: [
                     'Is deze persoon man of vrouw?',
                     'Hoe oud is deze persoon?',
                     'Is deze persoon blij?',
@@ -22,17 +22,25 @@
                     'Wat is de levensverwachting van deze persoon?',
                 ],
                 currentQuestion: 0,
+                answer: 0,
             }
         },
         mounted() {
-            $socket.emit('question', 0);
+            this.setQuestion(0);
         },
         methods: {
+            ...mapActions({
+                setQuestion: 'questions/setQuestion',
+                setAnswer: 'questions/setAnswer',
+            }),
+
             nextQuestion() {
+                // TODO: add slider and set this.answer as its value, pass this.answer with this.setAnswer instead of the random number.
+                this.setAnswer((Math.random() * 100).toFixed())
                 this.currentQuestion >= 6
                     ? (this.currentQuestion = 0)
                     : this.currentQuestion++
-                $socket.emit('question', this.currentQuestion);
+                this.setQuestion(this.currentQuestion);
             },
         },
     }

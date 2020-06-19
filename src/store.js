@@ -9,7 +9,7 @@ const modules = {};
 // Dynamically import and namespace Vuex modules
 // Add new modules here
 const moduleNames = [
-	'profiles',
+	'questions',
 	'video'
 ];
 

@@ -5,7 +5,8 @@ import mutations from './mutations';
 const namespaced = true;
 
 const state = {
-	list: []
+	question: 0,
+	answer: 0,
 };
 
 export default {

@@ -1,13 +1,14 @@
 <template>
     <div class="camera-page">
         <camera />
-        <div id="question">{{questionsArray[currentQuestion]}}</div>
+        <div id="question">{{questionsArray[question]}} // antwoord: {{answer}}</div>
+
     </div>
 </template>
 
 <script>
     import Camera from '@/components/Camera'
-    import $socket from '@/socket-instance'
+    import { mapGetters } from 'vuex';
 
     export default {
         name: 'CameraPage',
@@ -25,18 +26,18 @@
                     'AI kijkt naar je maandelijkse inkomen',
                     'AI kijkt naar je levensverwachting',
                 ],
-                currentQuestion: 0,
             }
         },
-        mounted() {
-            $socket.on('question', (question) => {
-                this.currentQuestion = question
-                console.log(question)
+        computed: {
+            ...mapGetters({
+                question: 'questions/question',
+                answer: 'questions/answer',
             })
         },
         methods: {
         },
     }
+
 </script>
 
 <style lang="scss">

@@ -23,11 +23,11 @@ const io = require('socket.io')(config.Server.settings.socket, {
     cookie: true,
     pingInterval: 1000,
     pingTimeout: 1000,
-    upgradeTimeout: 1000,   
+    upgradeTimeout: 1000,
     allowUpgrades: true,
     cookie: 'AAI_stream',
     cookiePath:'/',
-    cookieHttpOnly:true 
+    cookieHttpOnly:true
 });
 
 io.on('connection',function(socket){
@@ -35,12 +35,12 @@ io.on('connection',function(socket){
         socket.broadcast.emit('stream',data);
     });
 
-    socket.on('question', (question) => {
+    socket.on('setQuestion', (question) => {
         socket.broadcast.emit('question', question)
     });
 
-    socket.on('answer', (answer) => {
-        socket.emit('question', answer)
+    socket.on('setAnswer', (answer) => {
+        socket.broadcast.emit('answer', answer)
     });
 });
 
