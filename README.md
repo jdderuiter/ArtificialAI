@@ -11,7 +11,7 @@ De beoordelaar doorloopt een aantal vragen die normaal beantwoord zouden worden 
 ## De webapplicatie
 In ons mvp hebben we de volgende functionaliteiten ontwikkeld.
 
-![storyboard](http://project.cmi.hr.nl/2019_2020/dc7_zh_t8/wp-content/uploads/2020/06/Screenshot-2020-06-23-at-16.49.38.png "Storyboard")
+![storyboard](https://project.cmi.hr.nl/2019_2020/dc7_zh_t8/wp-content/uploads/2020/06/Screenshot-2020-06-23-at-16.49.38.png "Storyboard")
 
 -   Onboarding voor zowel de beoordelaar als beoordeelde
 -   Live videofeed tussen de beoordeelde en de beoordelaar
