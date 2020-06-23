@@ -2,7 +2,7 @@
   "name": "AAIserver",
   "version": "1.0.0",
   "description": "",
-  "main": "proxy.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
@@ -13,10 +13,7 @@
     "nodemon": "^1.19.1"
   },
   "dependencies": {
-    "concurrently": "^4.1.1",
     "express": "^4.17.1",
-    "http-proxy": "^1.17.0",
-    "mongoose": "^5.9.7",
     "socket.io": "^2.3.0"
   }
 }
