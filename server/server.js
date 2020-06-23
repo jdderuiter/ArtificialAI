@@ -1,13 +1,12 @@
 const express    = require('express');
 const path       = require('path');
-const config     = require(path.join(__dirname,"./config/global.json"));
-const port       = config.Server.settings.port;
+const port       = 8000;
 const app        = express();
 
 /**
  * WebSocket Configuration
  */
-const io = require('socket.io')(config.Server.settings.socket, {
+const io = require('socket.io')(8001, {
     handlePreflightRequest: (req, res) => {
         const headers = {
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
@@ -51,7 +50,7 @@ io.of('/stream').clients((error, clients) => {
 
 app.listen(port, () => console.log(`\x1b[40m`,`\x1b[32m`,
 `
-    [+] Server         : http://localhost:${port}
-    [+] Socket         : ws://localhost:${config.Server.settings.port}
+    [+] Server         : http://localhost:8000
+    [+] Socket         : ws://localhost:8000
     [~] Running Server...
 `,`\x1b[0m`));

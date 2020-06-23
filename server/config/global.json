@@ -1,8 +1,0 @@
-{
-    "Server" : {
-      "settings" :{
-        "port"   : "8000",
-        "socket" : "8001"
-      }
-    }
-}
