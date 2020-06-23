@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import CameraPage from '@/pages/CameraPage'
-import TestWatch from '@/pages/TestWatch'
+import OnboardingPageAI from '@/pages/OnboardingPages/AI'
+import OnboardingPageSubject from '@/pages/OnboardingPages/Subject'
+import WatchPage from '@/pages/WatchPage'
 import ProfilesPage from '@/pages/ProfilesPage'
 import RatePage from '@/pages/RatePage'
 import DeletePage from '@/pages/DeletePage'
@@ -10,7 +12,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/camera',
     name: 'camera',
     component: CameraPage
   },
@@ -20,9 +22,19 @@ const routes = [
     redirect: '/'
   },
   {
+    path: '/onboarding-ai',
+    name: 'onboarding-ai',
+    component: OnboardingPageAI
+  },
+  {
+    path: '/',
+    name: 'onboarding',
+    component: OnboardingPageSubject
+  },
+  {
     path: '/watch',
-    name: 'testwatch',
-    component: TestWatch
+    name: 'watch',
+    component: WatchPage
   },
   {
     path: '/profiles',

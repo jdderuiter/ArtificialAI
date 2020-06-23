@@ -10,7 +10,7 @@
     import Questions from '@/components/Questions'
 
     export default {
-        name: 'TestPage',
+        name: 'Watchpage',
         components: {
             Questions,
         },

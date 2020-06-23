@@ -36,6 +36,7 @@
                 $socket.emit('stream',this.canvas.toDataURL('image/webp'));
             },
             initAI () {
+                this.loading = true
                 console.log("load ai models")
                 Promise.all([
                     faceapi.loadSsdMobilenetv1Model(MODEL_URL),
@@ -46,11 +47,11 @@
             },
             startVideo () {
                 navigator.getUserMedia = ( navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia );
-            
+
                 if(navigator.getUserMedia)
                 {
                     navigator.getUserMedia({
-                        video: true, 
+                        video: true,
                         audio: false
                     },this.loadCamera,this.loadFail);
                 }
@@ -63,7 +64,7 @@
 
                     //append canvas to body or the dom element where you want to append it
                     document.body.append(canvas)
-                    
+
                     // displaySize will help us to match the dimension with video screen and accordingly it will draw our detections
                     // on the streaming video screen
                     console.log(this.video)
@@ -81,7 +82,7 @@
                 })
 
                 this.draw()
-    
+
                 setInterval(() => {
                     this.draw();
                 },16);
@@ -90,18 +91,16 @@
         mounted () {
             this.canvas = this.$refs.canvas;
             this.context = this.canvas.getContext('2d');
-        
+
             this.canvas.width = 900;
             this.canvas.height = 700;
-        
+
             this.context.width = this.canvas.width;
             this.context.height = this.canvas.height;
-        
+
             this.video = this.$refs.video;
 
-            window.onload = () => {
-                this.initAI()
-            };
+            this.initAI()
         }
     }
 </script>
@@ -130,6 +129,6 @@
         &__canvas {
             display: none;
         }
-    }   
+    }
 
 </style>
