@@ -1,5 +1,5 @@
 <template>
-    <div class="camera">
+    <div class="camera" ref="camera">
         <video ref="video" class="camera__video" autoplay="true"></video>
         <canvas ref="canvas" class="camera__canvas"></canvas>
     </div>
@@ -61,13 +61,13 @@
                     const canvas = faceapi.createCanvasFromMedia(this.video);
                     canvas.style.position = "absolute";
                     canvas.style.top = "0";
+                    canvas.style.left = "0";
 
                     //append canvas to body or the dom element where you want to append it
-                    document.body.append(canvas)
+                    this.$refs.camera.append(canvas)
 
                     // displaySize will help us to match the dimension with video screen and accordingly it will draw our detections
                     // on the streaming video screen
-                    console.log(this.video)
                     const displaySize = { width: this.video.clientWidth, height: this.video.clientHeight }
 
                     faceapi.matchDimensions(canvas, displaySize)
