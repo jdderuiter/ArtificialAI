@@ -21,7 +21,7 @@ const io = require('socket.io')(8001, {
     origins: '*:*',
     cookie: true,
     pingInterval: 1000,
-    pingTimeout: 60000,
+    pingTimeout: 30000,
     upgradeTimeout: 1000,
     allowUpgrades: true,
     cookie: 'AAI_stream',
