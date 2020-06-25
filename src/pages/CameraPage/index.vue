@@ -1,8 +1,10 @@
 <template>
     <div class="camera-page">
         <camera />
-        <div id="question">{{questionsArray[question]}} // antwoord: {{answer}}</div>
-
+        <div>
+            <div id="question">{{questionsArray[question]}} </div>
+            <div id="answer"> Antwoord op de vorige vraag is: {{answer}} </div>
+        </div>
     </div>
 </template>
 
@@ -15,6 +17,7 @@
         components: {
             Camera
         },
+
         data() {
             return {
                 questionsArray: [
@@ -23,9 +26,10 @@
                     'AI kijk hoe blij je bent',
                     'AI kijkt hoe aantrekkelijk je bent',
                     'AI kijkt waar je vandaan komt',
-                    'AI kijkt naar je maandelijkse inkomen',
+                    'AI kijkt naar je uurloon',
                     'AI kijkt naar je levensverwachting',
                 ],
+                isAnswered :false,
             }
         },
         computed: {
@@ -34,8 +38,9 @@
                 answer: 'questions/answer',
             })
         },
-        methods: {
-        },
+        methods: { 
+
+        }
     }
 
 </script>
@@ -44,19 +49,30 @@
     $component: 'camera-page';
 
     .#{$component} {
-        //Styles go here
         position: relative;
         text-align: center;
 
         #question {
-            width: 100%;
+            width: 100vw;
             height: 50px;
             position: absolute;
             top: 10%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 100;
+            color: #f2f2f2; 
+        }
+        #answer {
+            width: 100vw;
+            height: 70px;
+            position: relative;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            color: #a3aeee; 
         }
     }
+    
 
 </style>
