@@ -8,11 +8,16 @@
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/default.css'
 
-  export default {
-    name: 'Slider',
-    components:{
-      VueSlider
+export default {
+  name: 'Slider',
+  components:{
+    VueSlider
+  },
+  data: function () {
+    return {
+      value: 0
     }
+  }
 }
 </script>
 

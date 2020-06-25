@@ -1,7 +1,7 @@
 <template>
     <div class="questions">
-        <div>{{ questionsArray[currentQuestion] }}</div>
-        <Slider />
+        <div>{{ questionsArray[currentQuestion].question }}</div>
+        <Slider ref="slider" />
         <button v-on:click="nextQuestion">Volgende vraag</button>
     </div>
 </template>
@@ -17,14 +17,43 @@
         },
         data() {
             return {
-                questionsArray: [
-                    'Is deze persoon man of vrouw?',
-                    'Hoe oud is deze persoon?',
-                    'Is deze persoon blij?',
-                    'Hoe aantrekkelijk is deze persoon?',
-                    'Is deze persoon Nederlander?',
-                    'Wat is het maandelijks inkomen van deze persoon?',
-                    'Wat is de levensverwachting van deze persoon?',
+                questionsArray: [ 
+                    {
+                        question: 'Is deze persoon man of vrouw?',
+                        min: 'man',
+                        max: 'vrouw'
+                    },
+                    {
+                        question: 'Hoe oud is deze persoon?',
+                        min: 0,
+                        max: 100 
+                    },
+                    {
+                        question: 'Is deze persoon blij?',
+                        min:'verdietig',
+                        max: 'blij'
+                    },
+                    {
+                        question: 'Hoe aantrekkelijk is deze persoon?',
+                        min: 0,
+                        max: 100 
+                    },
+                    {
+                        question: 'Is deze persoon Nederlander?',
+                        min: 'ja',
+                        max: 'nee',
+                    },
+                    {
+                        question: 'Wat is het maandelijks inkomen van deze persoon?',
+                        min: 0,
+                        max: 10000,
+                    },
+                    {
+                        question: 'Wat is de levensverwachting van deze persoon?',
+                        min: 0 ,
+                        max: 100
+                    },
+
                 ],
                 currentQuestion: 0,
                 answer: 0,
@@ -40,9 +69,7 @@
             }),
 
             nextQuestion() {
-
-                // TODO: add slider and set this.answer as its value, pass this.answer with this.setAnswer instead of the random number.
-                this.setAnswer((Math.random() * 100).toFixed())
+                this.setAnswer(this.$refs.slider.$data.value)
                 this.currentQuestion >= 6
                     ? (this.currentQuestion = 0)
                     : this.currentQuestion++
@@ -56,6 +83,6 @@
     $component: 'questions';
 
     .#{$component} {
-        //Styles go here
+        color: #f2f2f2;
     }
 </style>
