@@ -2,7 +2,7 @@
     <div class="questions">
         <div>{{ questionsArray[currentQuestion].question }}</div>
         <Slider ref="slider" :question="questionsArray[currentQuestion]" />
-        <button v-on:click="nextQuestion">Volgende vraag</button>
+        <button class="btn btn-light" v-on:click="nextQuestion">Volgende vraag</button>
     </div>
 </template>
 
@@ -35,7 +35,7 @@
                     },
                     {
                         question: 'Hoe aantrekkelijk is deze persoon?',
-                        min: 'totaal niet aantrekkelijk',
+                        min: 'niet aantrekkelijk',
                         max: 'zeer aantrekkelijk' 
                     },
                     {
