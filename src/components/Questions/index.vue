@@ -40,11 +40,11 @@
                     },
                     {
                         question: 'Is deze persoon Nederlander?',
-                        min: 'ja',
-                        max: 'nee',
+                        min: 'nee',
+                        max: 'ja',
                     },
                     {
-                        question: 'Wat is het uurloon van deze persoon?',
+                        question: "Wat is het uurloon van deze persoon in euro's?",
                         min: 0,
                         max: 100,
                     },
