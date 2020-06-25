@@ -17,7 +17,7 @@
         },
         data() {
             return {
-                questionsArray: [ 
+                questionsArray: [
                     {
                         question: 'Is deze persoon man of vrouw?',
                         min: 'man',
@@ -26,7 +26,7 @@
                     {
                         question: 'Hoeveel jaar oud is deze persoon?',
                         min: 0,
-                        max: 100 
+                        max: 100
                     },
                     {
                         question: 'Is deze persoon blij?',
@@ -70,10 +70,10 @@
 
             nextQuestion() {
                 this.setAnswer(this.$refs.slider.$data.value)
-                this.currentQuestion >= 6
-                    ? (this.currentQuestion = 0)
-                    : this.currentQuestion++
+                this.currentQuestion++
                 this.setQuestion(this.currentQuestion);
+                console.log(this.currentQuestion)
+                this.currentQuestion >= 7 && this.$router.push('profile')
             },
         },
     }

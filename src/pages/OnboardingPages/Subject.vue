@@ -3,7 +3,7 @@
         <h1>Laat je beoordelen door een AI</h1>
         <p>Tegenwoordig worden er veel conclusies gemaakt op basis van gezichtsherkenning door AI (Artificial Intelligence). Deze keuzes kunnen heel bizar en raar zijn.
             Vandaag krijg je te zien wat voor profiel een AI over jou zou maken.</p>
-        <router-link class="nav-link" to="/camera">Beginnen</router-link>
+        <a href="/camera">Beginnen</a>
     </div>
 </template>
 

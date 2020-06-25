@@ -4,7 +4,7 @@ import CameraPage from '@/pages/CameraPage'
 import OnboardingPageAI from '@/pages/OnboardingPages/AI'
 import OnboardingPageSubject from '@/pages/OnboardingPages/Subject'
 import WatchPage from '@/pages/WatchPage'
-import ProfilesPage from '@/pages/ProfilesPage'
+import ProfilePage from '@/pages/ProfilePage'
 import RatePage from '@/pages/RatePage'
 import DeletePage from '@/pages/DeletePage'
 
@@ -37,9 +37,9 @@ const routes = [
     component: WatchPage
   },
   {
-    path: '/profiles',
-    name: 'profiles',
-    component: ProfilesPage
+    path: '/profile',
+    name: 'profile',
+    component: ProfilePage
   },
   {
     path: '/delete',
