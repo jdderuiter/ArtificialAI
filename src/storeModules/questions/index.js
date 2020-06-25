@@ -7,6 +7,7 @@ const namespaced = true;
 const state = {
 	question: 0,
 	answer: 0,
+	allAnswers: [],
 };
 
 export default {
@@ -14,5 +15,5 @@ export default {
 	state,
 	actions,
 	getters,
-	mutations
+	mutations,
 };
