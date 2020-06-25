@@ -7,11 +7,14 @@ import $socket from '@/socket-instance';
 const setQuestion = ( { commit }, question) => {
     // Emit the image (base 64) to socket
     $socket.emit('setQuestion', question)
+    commit('SET_QUESTION', question)
+
 }
 
 const setAnswer = ( { commit }, answer) => {
     // Emit the image (base 64) to socket
     $socket.emit('setAnswer', answer)
+    commit('SET_ANSWER', answer)
 }
 
 // ACTION CALLED BY BACKEND AUTOMATICALLY (magic 🧙🏻‍♂️)

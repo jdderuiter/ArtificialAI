@@ -1,8 +1,10 @@
 <template>
     <div class="camera-page">
-        <camera />
-        <div id="question">{{questionsArray[question]}} // antwoord: {{answer}}</div>
-
+        <div>
+            <camera />
+            <div id="answer">Antwoord op vorige vraag: {{answer}}</div>
+            <div id="question">{{questionsArray[question]}}</div>
+        </div>
     </div>
 </template>
 
@@ -23,7 +25,7 @@
                     'AI kijk hoe blij je bent',
                     'AI kijkt hoe aantrekkelijk je bent',
                     'AI kijkt waar je vandaan komt',
-                    'AI kijkt naar je maandelijkse inkomen',
+                    'AI kijkt naar je uurloon',
                     'AI kijkt naar je levensverwachting',
                 ],
             }
@@ -32,9 +34,18 @@
             ...mapGetters({
                 question: 'questions/question',
                 answer: 'questions/answer',
-            })
+            }),
         },
-        methods: {
+        watch: {
+            question: function (val) {
+                console.log(val)
+                if(val >= 7) {
+                    var elem = document.getElementsByTagName('canvas')[0]
+                    elem.parentNode.removeChild(elem)
+                    this.$router.push('profile')
+                }
+
+            }
         },
     }
 
@@ -47,6 +58,16 @@
         //Styles go here
         position: relative;
         text-align: center;
+
+        #answer {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            z-index: 100;
+        }
 
         #question {
             width: 100%;
