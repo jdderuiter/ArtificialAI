@@ -18,7 +18,7 @@
             AI vond je {{allAnswers[4]}} procent Nederlander
         </div>
          <div>
-            AI schat je uurloon op {{allAnswers[5]}}
+            AI schat je uurloon op {{allAnswers[5]}} euro
         </div>
          <div>
             AI denkt dat je {{allAnswers[6]}} jaar oud wordt

@@ -25,7 +25,7 @@
                     'AI kijk hoe blij je bent',
                     'AI kijkt hoe aantrekkelijk je bent',
                     'AI kijkt waar je vandaan komt',
-                    'AI kijkt naar je maandelijkse inkomen',
+                    'AI kijkt naar je uurloon',
                     'AI kijkt naar je levensverwachting',
                 ],
             }

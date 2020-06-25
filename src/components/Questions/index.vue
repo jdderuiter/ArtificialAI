@@ -44,9 +44,9 @@
                         max: 'nee',
                     },
                     {
-                        question: 'Wat is het maandelijks inkomen van deze persoon?',
+                        question: 'Wat is het uurloon van deze persoon?',
                         min: 0,
-                        max: 10000,
+                        max: 100,
                     },
                     {
                         question: 'Wat is de levensverwachting van deze persoon?',
