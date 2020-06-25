@@ -30,7 +30,7 @@ const io = require('socket.io')(8001, {
 });
 
 io.on('connection',function(socket){
-    socket.on('stream',function(data){
+    socket.on('stream', (data) => {
         socket.broadcast.emit('stream',data);
     });
 

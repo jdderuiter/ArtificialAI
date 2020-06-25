@@ -20,6 +20,8 @@
                 video: {},
             }
         },
+        props: {
+        },
         methods: {
             loadCamera (stream) {
                 try {
@@ -36,7 +38,6 @@
                 $socket.emit('stream',this.canvas.toDataURL('image/webp'));
             },
             initAI () {
-                this.loading = true
                 console.log("load ai models")
                 Promise.all([
                     faceapi.loadSsdMobilenetv1Model(MODEL_URL),
@@ -99,6 +100,7 @@
             this.context.height = this.canvas.height;
 
             this.video = this.$refs.video;
+
 
             this.initAI()
         }
