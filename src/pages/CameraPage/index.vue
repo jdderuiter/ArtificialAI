@@ -2,7 +2,7 @@
     <div class="camera-page">
         <div>
             <camera />
-            <div class="answer-container">
+            <div>
                 <div id="answer">Antwoord op vorige vraag: {{answer}}</div>
                 <div id="question">{{questionsArray[question]}}</div>
             </div>
@@ -62,33 +62,28 @@
     .#{$component} {
         position: relative;
         text-align: center;
-
-        .answer-container{
-            width: 100vw;
-            color: #222222;
-            font-size: 60px;
-        }
-
-
+        
         #answer {
+            width: 100vw;
             height: 70px;
             position: relative;
             top: 10%;
             left: 50%;
             transform: translate(-50%, -100%);
             z-index: 100;
-            
+            font-size: 50px;
         }
 
         #question {
+            width: 100vw;
             height: 50px;
             position: absolute;
             top: 10%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 100;
+            font-size: 50px;
         }
     }
     
-
 </style>
