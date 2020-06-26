@@ -17,6 +17,7 @@
         components: {
             Camera
         },
+
         data() {
             return {
                 questionsArray: [
@@ -28,6 +29,7 @@
                     'AI kijkt naar je uurloon',
                     'AI kijkt naar je levensverwachting',
                 ],
+                isAnswered :false,
             }
         },
         computed: {
@@ -36,6 +38,7 @@
                 answer: 'questions/answer',
             }),
         },
+
         watch: {
             question: function (val) {
                 console.log(val)
@@ -55,7 +58,6 @@
     $component: 'camera-page';
 
     .#{$component} {
-        //Styles go here
         position: relative;
         text-align: center;
 
@@ -70,14 +72,26 @@
         }
 
         #question {
-            width: 100%;
+            width: 100vw;
             height: 50px;
             position: absolute;
             top: 10%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 100;
+            color: #f2f2f2; 
+        }
+        #answer {
+            width: 100vw;
+            height: 70px;
+            position: relative;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            color: #a3aeee; 
         }
     }
+    
 
 </style>

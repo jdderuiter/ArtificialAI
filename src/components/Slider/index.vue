@@ -1,6 +1,8 @@
 <template>
   <div class="slider">
-    <vue-slider v-model="value"></vue-slider>
+    <div class="min">{{question.min}}</div>
+    <vue-slider v-model="value"  :tooltip="'always'" min=0 max=100 v-bind:style="{ flex : 1, margin: '0 20px'  }"></vue-slider>
+    <div class="max">{{question.max}}</div>
   </div>
 </template>
 
@@ -13,9 +15,15 @@ export default {
   components:{
     VueSlider
   },
+  props: {
+    question:{
+      type: Object
+    } 
+  },
+
   data: function () {
     return {
-      value: 0
+      value: 0,
     }
   }
 }
@@ -26,6 +34,10 @@ export default {
 
     .#{$component} {
       color: #ffffff;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
     }
     
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="questions">
         <div>{{ questionsArray[currentQuestion].question }}</div>
-        <Slider ref="slider" />
-        <button v-on:click="nextQuestion">Volgende vraag</button>
+        <Slider ref="slider" :question="questionsArray[currentQuestion]" />
+        <button class="btn btn-light" v-on:click="nextQuestion">Volgende vraag</button>
     </div>
 </template>
 
@@ -21,10 +21,10 @@
                     {
                         question: 'Is deze persoon man of vrouw?',
                         min: 'man',
-                        max: 'vrouw'
+                        max: 'vrouw'    
                     },
                     {
-                        question: 'Hoe oud is deze persoon?',
+                        question: 'Hoeveel jaar oud is deze persoon?',
                         min: 0,
                         max: 100
                     },
@@ -35,16 +35,16 @@
                     },
                     {
                         question: 'Hoe aantrekkelijk is deze persoon?',
-                        min: 0,
-                        max: 100
+                        min: 'niet aantrekkelijk',
+                        max: 'zeer aantrekkelijk' 
                     },
                     {
                         question: 'Is deze persoon Nederlander?',
-                        min: 'ja',
-                        max: 'nee',
+                        min: 'nee',
+                        max: 'ja',
                     },
                     {
-                        question: 'Wat is het uurloon van deze persoon?',
+                        question: "Wat is het uurloon van deze persoon in euro's?",
                         min: 0,
                         max: 100,
                     },
@@ -84,5 +84,7 @@
 
     .#{$component} {
         color: #f2f2f2;
+        background-color: rgba(0,0,0,0.25);
+        padding: 10px;
     }
 </style>

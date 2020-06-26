@@ -1,29 +1,30 @@
 <template>
     <div class="profiles">
-        <h1>Profiel</h1>
+        <h1>Jouw profiel</h1>
         <!-- Loop trough profiles currently in the store -->
-        <div>
-            AI vond je {{allAnswers[0]}} procent man
-        </div>
-        <div>
-            AI vond je {{allAnswers[1]}} jaar oud
-        </div>
-         <div>
-            AI vond je {{allAnswers[2]}} procent blij
-        </div>
-         <div>
-            AI vond je {{allAnswers[3]}} procent aantrekkelijk
-        </div>
-         <div>
-            AI vond je {{allAnswers[4]}} procent Nederlander
-        </div>
-         <div>
-            AI schat je uurloon op {{allAnswers[5]}} euro
-        </div>
-         <div>
-            AI denkt dat je {{allAnswers[6]}} jaar oud wordt
-        </div>
-
+        <ul class="list-group-flush">
+            <li class="list-group-item">
+            AI vond je {{allAnswers[0]}} procent man.
+            </li>
+            <li class="list-group-item">
+                AI vond je {{allAnswers[1]}} jaar oud.
+            </li>
+            <li class="list-group-item">
+                AI vond je {{allAnswers[2]}} procent blij.
+            </li>
+            <li class="list-group-item">
+                AI vond je {{allAnswers[3]}} procent aantrekkelijk.
+            </li>
+            <li class="list-group-item">
+                AI vond je {{allAnswers[4]}} procent Nederlander.
+            </li>
+            <li class="list-group-item">
+                AI schat je uurloon op {{allAnswers[5]}} euro.
+            </li>
+            <li class="list-group-item">
+                AI denkt dat je {{allAnswers[6]}} jaar oud wordt.
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -49,7 +50,13 @@
     $component: 'profiles';
 
     .#{$component} {
-        //Styles go here
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 20px;
+        border: #6c757d42 2px solid;
+    
         h1 {
             text-align: center;
         }
