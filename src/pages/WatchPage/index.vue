@@ -36,7 +36,7 @@
 
         .questions {
             position: absolute;
-            width: 50%;
+            width: 80%;
             top: 10%;
             left: 50%;
             transform: translate(-50%, -50%);

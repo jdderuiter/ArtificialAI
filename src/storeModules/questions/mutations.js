@@ -11,6 +11,9 @@ export default {
     },
     SET_ANSWER(state, payload) {
         Vue.set(state, 'answer', payload);
+        
+    },
+    UPDATE_ALL_ANSWERS(state, payload) {
         state.allAnswers.push(payload);
     }
 };

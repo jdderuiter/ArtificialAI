@@ -2,8 +2,8 @@
     <div class="camera-page">
         <div>
             <camera />
-            <div id="answer">Antwoord op vorige vraag: {{answer}}</div>
             <div id="question">{{questionsArray[question]}}</div>
+            <div id="answer">Antwoord wordt berekend: {{answer}}</div>
         </div>
     </div>
 </template>
