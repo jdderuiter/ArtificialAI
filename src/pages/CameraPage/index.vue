@@ -2,8 +2,10 @@
     <div class="camera-page">
         <div>
             <camera />
-            <div id="question">{{questionsArray[question]}}</div>
-            <div id="answer">Antwoord wordt berekend: {{answer}}</div>
+            <div class="answer-container">
+                <div id="answer">Antwoord op vorige vraag: {{answer}}</div>
+                <div id="question">{{questionsArray[question]}}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -61,35 +63,30 @@
         position: relative;
         text-align: center;
 
-        #answer {
-            width: 100%;
-            height: 50px;
-            position: absolute;
-            top: 0%;
-            left: 50%;
-            transform: translate(-50%, -100%);
-            z-index: 100;
+        .answer-container{
+            width: 100vw;
+            color: #222222;
+            font-size: 60px;
         }
 
-        #question {
-            width: 100vw;
-            height: 50px;
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 100;
-            color: #f2f2f2; 
-        }
+
         #answer {
-            width: 100vw;
             height: 70px;
             position: relative;
             top: 10%;
             left: 50%;
+            transform: translate(-50%, -100%);
+            z-index: 100;
+            
+        }
+
+        #question {
+            height: 50px;
+            position: absolute;
+            top: 10%;
+            left: 50%;
             transform: translate(-50%, -50%);
             z-index: 100;
-            color: #a3aeee; 
         }
     }
     
