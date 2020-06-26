@@ -1,7 +1,7 @@
 <template>
     <div class="questions">
         <div>{{ questionsArray[currentQuestion].question }}</div>
-        <Slider ref="slider" :question="questionsArray[currentQuestion]" />
+        <Slider ref="slider" :question="questionsArray[currentQuestion]" @change="setAnswer"/>
         <button class="btn btn-light" v-on:click="nextQuestion">Volgende vraag</button>
     </div>
 </template>
@@ -69,7 +69,6 @@
             }),
 
             nextQuestion() {
-                this.setAnswer(this.$refs.slider.$data.value)
                 this.currentQuestion++
                 this.setQuestion(this.currentQuestion);
                 console.log(this.currentQuestion)

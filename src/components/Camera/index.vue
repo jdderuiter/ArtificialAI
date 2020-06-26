@@ -63,6 +63,7 @@
                     canvas.style.position = "absolute";
                     canvas.style.top = "0";
                     canvas.style.left = "0";
+                    canvas.style.height = "100vh";
 
                     //append canvas to body or the dom element where you want to append it
                     this.$refs.camera.append(canvas)

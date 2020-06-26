@@ -1,7 +1,7 @@
 <template>
   <div class="slider">
     <div class="min">{{question.min}}</div>
-    <vue-slider v-model="value"  :tooltip="'always'" min=0 max=100 v-bind:style="{ flex : 1, margin: '0 20px'  }"></vue-slider>
+    <vue-slider v-model="value"  :tooltip="'always'" min=0 max=100 v-bind:style="{ flex : 1, margin: '0 20px'  }" @change="$emit('change', value)"></vue-slider>
     <div class="max">{{question.max}}</div>
   </div>
 </template>

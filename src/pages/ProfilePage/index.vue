@@ -4,7 +4,7 @@
         <!-- Loop trough profiles currently in the store -->
         <ul class="list-group-flush">
             <li class="list-group-item">
-            AI vond je {{allAnswers[0]}} procent man.
+            AI vond je {{allAnswers[0]}} procent vrouw.
             </li>
             <li class="list-group-item">
                 AI vond je {{allAnswers[1]}} jaar oud.
