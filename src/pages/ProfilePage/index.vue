@@ -1,6 +1,7 @@
 <template>
     <div class="profiles">
-        <h1>Jouw profiel</h1>
+        <h1 v-if="view === 'profile'">Jouw profiel</h1>
+        <h1 v-else>Het profiel dat jij hebt samengesteld als AI</h1>
         <!-- Loop trough profiles currently in the store -->
         <ul class="list-group-flush">
             <li class="list-group-item">
@@ -34,6 +35,12 @@
 
     export default {
         name: 'ProfilesPage',
+        props: {
+            view: {
+                type: String,
+                default: "profile"
+            }
+        },
         components: {
             Profile
         },

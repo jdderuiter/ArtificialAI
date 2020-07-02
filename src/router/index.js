@@ -37,9 +37,20 @@ const routes = [
     component: WatchPage
   },
   {
+    path: '/profile/ai',
+    name: 'profile',
+    component: ProfilePage,
+    props: {
+      view: "ai"
+    }
+  },
+  {
     path: '/profile',
     name: 'profile',
-    component: ProfilePage
+    component: ProfilePage,
+    props: {
+      view: "profile"
+    }
   },
   {
     path: '/delete',
