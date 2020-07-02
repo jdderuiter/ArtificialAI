@@ -72,7 +72,7 @@
                 this.currentQuestion++
                 this.setQuestion(this.currentQuestion);
                 console.log(this.currentQuestion)
-                this.currentQuestion >= 7 && this.$router.push('profile')
+                this.currentQuestion >= 7 && this.$router.push('profile.ai')
             },
         },
     }

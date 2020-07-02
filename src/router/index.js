@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: '/profile/ai',
-    name: 'profile',
+    name: 'profile.ai',
     component: ProfilePage,
     props: {
       view: "ai"
